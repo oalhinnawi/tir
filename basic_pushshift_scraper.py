@@ -17,6 +17,7 @@ from psaw import PushshiftAPI
 #Time/Date imports
 from datetime import datetime, timezone, timedelta
 from dateutil.relativedelta import relativedelta
+from datetime import date, timedelta
 
 
 def getComments(link,api,num_comments):
@@ -55,10 +56,10 @@ subs=[
       ]
 
 #Number of posts (min:0, max:500 per search)
-num_posts=3
+num_posts=20
 
 #comments (not entirely sure what min/max are)
-num_comments=1
+num_comments=10
 
 
 #Initializing the api for use
@@ -69,44 +70,52 @@ api = PushshiftAPI()
 
 #Get dates in between
 
-
+d1 = date(2010,1,1)
+d2 = date(2010,2,1)
+delta = d2 - d1
 for sub in subs:
-    
-    path=os.path.join(root_path+sub)+'/'
-    
-    #Making the request
-    submissions = api.search_submissions(subreddit=sub,
-                                         limit=num_posts,
-                                         sort_type='score',
-                                         sort='desc')
-    
-    index=0
-    
-    post_content=[]
-    #For the number of posts that we can query from the search...
-    for submission in submissions:
-        comms_array=[]
-        comms_array=getComments(submission.id,api,num_comments)
+    for i in range(0,delta.days):
+        path=os.path.join(root_path+sub)+'/'
         
-        if hasattr(submission,'body'):
-            body=submission.body
-        else:
-            body='N/A'
+        day = d1 + timedelta(days=i)
+        day2=d1 + timedelta(days=i+1)
+        #Making the request
+        submissions = api.search_submissions(subreddit=sub,
+                                             limit=num_posts,
+                                             sort_type='score',
+                                             sort='desc',
+                                             after=day.isoformat(),
+                                             before=day2.isoformat()
+                                             
+                                             )
         
-        #print for sanity check
-        post_content.append({
-            "score":submission.score,
-            "id":submission.id,
-            "link":submission.permalink,
-            "num_comms":submission.num_comments,
-            "time_created":submission.created,
-            "title":submission.title,
-            "body":body,
-            "comments":comms_array
-        })
-        print(post_content)
-    
-    dumpJson(path+'test.txt',post_content)
+        index=0
+        
+        post_content=[]
+        #For the number of posts that we can query from the search...
+        for submission in submissions:
+            comms_array=[]
+            comms_array=getComments(submission.id,api,num_comments)
+            
+            if hasattr(submission,'body'):
+                body=submission.body
+            else:
+                body='N/A'
+            
+            #print for sanity check
+            post_content.append({
+                "score":submission.score,
+                "id":submission.id,
+                "link":submission.permalink,
+                "num_comms":submission.num_comments,
+                "time_created":submission.created,
+                "title":submission.title,
+                "body":body,
+                "comments":comms_array
+            })
+            print(post_content)
+        
+        dumpJson(path+'/'+day.isoformat()+'.txt',post_content)
 
 
 
