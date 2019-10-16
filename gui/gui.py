@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, uic
 from skeleton import Ui_Form
 from textblob import TextBlob
 import json
-
+import os
  
  
 class MyApp(QtWidgets.QMainWindow, Ui_Form):
@@ -19,13 +19,22 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
         QtWidgets.QMainWindow.__init__(self)
         Ui_Form.__init__(self)
         self.setupUi(self)
-        self.show_raw_text("Fuck the federal agents")
-        self.classify_text("Fuck the federal agents")
+        
+        self.setup_path(r'C:\Users\Omar\Desktop\tir\tir\data\politics')
     
+    
+    
+    
+    def setup_path(path):
+        self.path=path
+        
     
     def process_date(self,date):
         self.get_dates_json(self,date)
-    
+        curr_post=next(post_gen(date))
+        
+        self.show_raw_text(curr_post['body'])
+        self.classify_text(curr_post['title'])
     
     def show_raw_text(self,raw_text):
         self.raw_text_view.append(raw_text)
@@ -48,17 +57,18 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
         self.sentiment_output.setText(sentiment)
         
         
-    def get_dates_json(self,date):
+    def post_gen(self,date):
         print(date)
         
-        database=""
-        sub=""
+        database="../data"
+        sub="politics"
         fs="/"
         
         true_path=database+fs+sub+fs+date
         with open(true_path) as stream:
             data=json.load(stream)
-            
+            for post in data:
+                yield(post)
         
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
