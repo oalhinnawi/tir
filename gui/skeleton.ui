@@ -31,8 +31,8 @@
   <widget class="QLabel" name="top_dist_label">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>70</y>
+     <x>10</x>
+     <y>60</y>
      <width>131</width>
      <height>16</height>
     </rect>
@@ -44,8 +44,8 @@
   <widget class="QPushButton" name="start_button">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>100</y>
+     <x>20</x>
+     <y>90</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -57,7 +57,7 @@
   <widget class="QLineEdit" name="num_posts_input">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>100</x>
      <y>10</y>
      <width>113</width>
      <height>22</height>
@@ -85,7 +85,7 @@
   <widget class="QLabel" name="topics_label">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>170</y>
      <width>81</width>
      <height>31</height>
@@ -105,7 +105,7 @@
     <rect>
      <x>260</x>
      <y>160</y>
-     <width>81</width>
+     <width>141</width>
      <height>31</height>
     </rect>
    </property>
@@ -115,7 +115,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Context:</string>
+    <string>Context Keywords:</string>
    </property>
   </widget>
   <widget class="QLabel" name="sentiment_label">
@@ -136,7 +136,7 @@
     <string>Sentiment:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="sentinment_output">
+  <widget class="QLabel" name="sentiment_output">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -203,7 +203,7 @@
   <widget class="QTextBrowser" name="topics_view">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>200</y>
      <width>241</width>
      <height>391</height>
@@ -228,6 +228,19 @@
      <width>256</width>
      <height>391</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="next_post_button">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Next Post</string>
    </property>
   </widget>
  </widget>
