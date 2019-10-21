@@ -14,10 +14,18 @@ import json
 import os
 from pathlib import Path
 from rake_nltk import Rake
-
+from gensim.test.utils import common_corpus, common_dictionary
 import gensim
 import datetime
 import gui_utils
+import nltk
+from nltk.corpus import stopwords 
+import numpy as np
+from sklearn.feature_extraction.text import CountVectorizer
+from gensim.corpora import Dictionary
+from collections import defaultdict
+from gensim import corpora
+
 
 class MyApp(QtWidgets.QMainWindow, Ui_Form):
     def __init__(self):
@@ -38,9 +46,12 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
 #        print(dir(self.dateEdit.date().fromString()))
         
     def model_check(self):
-        model=gensim.models.LsiModel.load(r'C:\Users\Omar\Desktop\tir\lsi_model\model')
-        print(model.print_topics(5))
-    
+        self.model=gensim.models.LsiModel.load(r'C:\Users\Omar\Desktop\tir\lsi_model\model')
+        self.dictionary=Dictionary.load_from_text(r'C:\Users\Omar\Documents\COMP 490\refined_wiki\refined_wiki_wordids.txt.bz2')
+        #dictionary = corpora.Dictionary(texts)
+        
+        new_doc = "Wow are you the drizzle"
+        new_vec = self.dictionary.doc2bow(new_doc.lower().split())
     
     def setup_processing(self,path):
         self.path=path
@@ -70,10 +81,16 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
         curr_post=next(self.iterator)
         
 #        for curr_post in self.post_gen(data):
+        self.topics_view.setText('')
+        self.context_view.setText('')
+        self.raw_text_view.setText('')
+        
+        
         
         self.show_raw_text(curr_post['title'])
         self.classify_text(curr_post['title'])
         self.get_context_keywords(curr_post['title'])
+        self.get_topics(curr_post['title'])
         
     def classify_text(self,raw_text):
         blob=TextBlob(raw_text)
@@ -95,6 +112,23 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
             self.context_view.append(keyword)
 #        print(r.get_ranked_phrases())
 
+    def get_topics(self,data):
+        
+#        count = CountVectorizer()
+#        docs = np.array([data])
+#        bag = count.fit_transform(docs)
+#        print(bag)
+        bag=self.dictionary.doc2bow(data.lower().split())
+        topics=self.model[bag]
+#        self.topics_view.append(topics)
+        topics = sorted(topics, key=lambda x:x[1])
+        highest_one=topics[len(topics)-1]
+        print(highest_one)
+        model_outputs=self.model.show_topic(highest_one[0])
+        for topic in model_outputs:
+            self.topics_view.append(topic[0])
+    
+    
     def start_date(self,date):
                 
         #Getting the date from the date editor and then getting it preprocessed
