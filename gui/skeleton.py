@@ -2,18 +2,20 @@
 
 # Form implementation generated from reading ui file 'skeleton.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(796, 607)
         self.dateEdit = QtWidgets.QDateEdit(Form)
-        self.dateEdit.setGeometry(QtCore.QRect(140, 40, 151, 51))
+        self.dateEdit.setGeometry(QtCore.QRect(140, 50, 151, 51))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.dateEdit.setFont(font)
@@ -24,15 +26,6 @@ class Ui_Form(object):
         self.start_button = QtWidgets.QPushButton(Form)
         self.start_button.setGeometry(QtCore.QRect(20, 90, 93, 28))
         self.start_button.setObjectName("start_button")
-        self.num_posts_input = QtWidgets.QLineEdit(Form)
-        self.num_posts_input.setGeometry(QtCore.QRect(100, 10, 113, 22))
-        self.num_posts_input.setObjectName("num_posts_input")
-        self.num_posts_label = QtWidgets.QLabel(Form)
-        self.num_posts_label.setGeometry(QtCore.QRect(10, 0, 111, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.num_posts_label.setFont(font)
-        self.num_posts_label.setObjectName("num_posts_label")
         self.topics_label = QtWidgets.QLabel(Form)
         self.topics_label.setGeometry(QtCore.QRect(20, 170, 81, 31))
         font = QtGui.QFont()
@@ -40,7 +33,7 @@ class Ui_Form(object):
         self.topics_label.setFont(font)
         self.topics_label.setObjectName("topics_label")
         self.context_label = QtWidgets.QLabel(Form)
-        self.context_label.setGeometry(QtCore.QRect(260, 160, 141, 31))
+        self.context_label.setGeometry(QtCore.QRect(260, 160, 181, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.context_label.setFont(font)
@@ -61,7 +54,7 @@ class Ui_Form(object):
         self.keyword_input.setGeometry(QtCore.QRect(330, 40, 271, 51))
         self.keyword_input.setObjectName("keyword_input")
         self.raw_text_label = QtWidgets.QLabel(Form)
-        self.raw_text_label.setGeometry(QtCore.QRect(510, 160, 81, 31))
+        self.raw_text_label.setGeometry(QtCore.QRect(510, 160, 111, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.raw_text_label.setFont(font)
@@ -84,6 +77,12 @@ class Ui_Form(object):
         self.next_post_button = QtWidgets.QPushButton(Form)
         self.next_post_button.setGeometry(QtCore.QRect(20, 130, 91, 31))
         self.next_post_button.setObjectName("next_post_button")
+        self.subreddit_input_label = QtWidgets.QLabel(Form)
+        self.subreddit_input_label.setGeometry(QtCore.QRect(30, 20, 71, 16))
+        self.subreddit_input_label.setObjectName("subreddit_input_label")
+        self.subreddit_input = QtWidgets.QLineEdit(Form)
+        self.subreddit_input.setGeometry(QtCore.QRect(140, 10, 141, 31))
+        self.subreddit_input.setObjectName("subreddit_input")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -93,7 +92,6 @@ class Ui_Form(object):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.top_dist_label.setText(_translate("Form", "TOPIC DISTRIBUTION"))
         self.start_button.setText(_translate("Form", "Start"))
-        self.num_posts_label.setText(_translate("Form", "# of Posts:"))
         self.topics_label.setText(_translate("Form", "Topics:"))
         self.context_label.setText(_translate("Form", "Context Keywords:"))
         self.sentiment_label.setText(_translate("Form", "Sentiment:"))
@@ -101,4 +99,4 @@ class Ui_Form(object):
         self.raw_text_label.setText(_translate("Form", "Raw Text:"))
         self.keyword_filter_label.setText(_translate("Form", "Keyword Filter"))
         self.next_post_button.setText(_translate("Form", "Next Post"))
-
+        self.subreddit_input_label.setText(_translate("Form", "SUBREDDIT"))

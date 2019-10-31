@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>140</x>
-     <y>40</y>
+     <y>50</y>
      <width>151</width>
      <height>51</height>
     </rect>
@@ -54,34 +54,6 @@
     <string>Start</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="num_posts_input">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>10</y>
-     <width>113</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="num_posts_label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>0</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string># of Posts:</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="topics_label">
    <property name="geometry">
     <rect>
@@ -105,7 +77,7 @@
     <rect>
      <x>260</x>
      <y>160</y>
-     <width>141</width>
+     <width>181</width>
      <height>31</height>
     </rect>
    </property>
@@ -169,7 +141,7 @@
     <rect>
      <x>510</x>
      <y>160</y>
-     <width>81</width>
+     <width>111</width>
      <height>31</height>
     </rect>
    </property>
@@ -241,6 +213,29 @@
    </property>
    <property name="text">
     <string>Next Post</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="subreddit_input_label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SUBREDDIT</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="subreddit_input">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>10</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
    </property>
   </widget>
  </widget>

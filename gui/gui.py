@@ -47,11 +47,9 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
         
     def model_check(self):
         self.model=gensim.models.LsiModel.load(r'C:\Users\Omar\Desktop\tir\lsi_model\model')
-        self.dictionary=Dictionary.load_from_text(r'C:\Users\Omar\Documents\COMP 490\refined_wiki\refined_wiki_wordids.txt.bz2')
+        self.dictionary=Dictionary.load_from_text(r'C:\Users\Omar\Desktop\tir\wikidump_wordids.txt.bz2')
         #dictionary = corpora.Dictionary(texts)
         
-        new_doc = "Wow are you the drizzle"
-        new_vec = self.dictionary.doc2bow(new_doc.lower().split())
     
     def setup_processing(self,path):
         self.path=path
@@ -122,6 +120,7 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
         topics=self.model[bag]
 #        self.topics_view.append(topics)
         topics = sorted(topics, key=lambda x:x[1])
+        print(topics)
         highest_one=topics[len(topics)-1]
         print(highest_one)
         model_outputs=self.model.show_topic(highest_one[0])
@@ -169,7 +168,9 @@ class MyApp(QtWidgets.QMainWindow, Ui_Form):
         with open(true_path) as stream:
             data=json.load(stream)
         self.iterator=iter(data)
-        
+      
+    def dump_results_to_text(self):
+        print('')
         
         
 if __name__ == "__main__":
