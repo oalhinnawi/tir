@@ -21,15 +21,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def send_email(send_email):
-    
-    #Actual Information we'll be putting in
-    subject = "An email with attachment from Python"
-    body = "This is an email with attachment sent from Python"
-    sender_email = "my@gmail.com"
-    receiver_email = "your@gmail.com"
 
     port=465 #For SSL
-    password='projecttir'
+    password=''
     
     #Create a secure SSL context
     context=ssl.create_default_context()
