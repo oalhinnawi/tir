@@ -1,0 +1,19 @@
+.jumbotron {
+    text-align: center;
+    font-size: 2.5em;
+    text-decoration: double;
+}
+
+.intro {
+    text-align: center;
+    margin-left: 25%;
+    margin-right: 24%;
+    font-size: 1.5em;
+}
+
+.ending {
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-size: 1.5em;
+}

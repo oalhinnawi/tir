@@ -1,0 +1,21 @@
+.dropdown_input {
+    width: 24%;
+    overflow: hidden;
+}
+
+.email_input {
+    width: 24%;
+    overflow: hidden;
+}
+.date_input {
+    width: 24%;
+    overflow: hidden;
+}
+
+.entire_page {
+    overflow: hidden;
+}
+
+.submit_button {
+    justify-content: center;
+}
